@@ -71,4 +71,8 @@ public class Restaurant {
 		}
 		
 	}
+	
+	public ArrayList<ArrayList<Meal>> getMealsList(){
+		return this.mealsList;
+	}
 }

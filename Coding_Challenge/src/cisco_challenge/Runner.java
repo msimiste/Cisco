@@ -14,13 +14,14 @@ public class Runner {
 		int teamGF = in.nextInt();
 		int teamOther = in.nextInt();
 		
-		ArrayList <Restaurant> restaurants = new ArrayList<Restaurant>(count); 
-		
 		if(teamVegan + teamGF + teamOther != teamTotal) {
 			System.out.print("Invalid Input");
 			System.exit(0);
 		}
 		
+		Order order = new Order(teamVegan,teamGF,teamOther);
+		ArrayList <Restaurant> restaurants = new ArrayList<Restaurant>(count); 
+				
 		while(count-- > 0) {
 			restaurants.add(new Restaurant(in.nextInt(),in.nextInt(), in.nextInt(), in.nextInt()));
 		}
@@ -29,6 +30,13 @@ public class Runner {
 		
 		for(int i = 0; i < restaurants.size(); i++) {
 			System.out.println(restaurants.get(i).getRating());
+		}
+		Controller c = new Controller(order, restaurants);
+		if(c.isOrderPossible()) {
+			c.processOrder();
+		}
+		else {
+			System.out.print("This order can not be filled, there are more meals requested than available");
 		}
 		
 	}
