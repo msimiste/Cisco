@@ -7,20 +7,20 @@ import org.junit.jupiter.api.Test;
 class MealTest {
 
 	@Test
-	void vegetarianTest() {
+	void vegetarianCreateTest() {
 		Vegetarian v = new Vegetarian();
 		assertNotNull(v);
 		
 	}
 	
 	@Test
-	void glutenFreeTest() {
+	void glutenFreeCreateTest() {
 		GlutenFree gf = new GlutenFree();
 		assertNotNull(gf);
 	}
 
 	@Test
-	void regularTest() {
+	void regularCreateTest() {
 		Regular reg = new Regular();
 		assertNotNull(reg);
 	}
