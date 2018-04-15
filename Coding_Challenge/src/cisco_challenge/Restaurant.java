@@ -2,8 +2,12 @@ package cisco_challenge;
 
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
+/***
+ * 
+ * @author simdevs
+ *
+ */
 public class Restaurant {
 	private ArrayList <Meal> vList = new ArrayList<Meal> (0);
 	private ArrayList <Meal> gfList = new ArrayList<Meal> (0);
@@ -14,6 +18,14 @@ public class Restaurant {
 	
 	private ArrayList<ArrayList<Meal>> mealsList = new ArrayList<ArrayList<Meal>>(3);
 	
+	/***
+	 * 
+	 * @param rated
+	 * @param vegan
+	 * @param gf
+	 * @param other
+	 * @param n
+	 */
 	public Restaurant(int rated, int vegan, int gf, int other, String n) {
 		setName(n);
 		setRating(rated);
@@ -24,33 +36,61 @@ public class Restaurant {
 		order = new Order();
 	}
 	
-	
+	/***
+	 * 
+	 * @param n
+	 */
 	public void setName(String n) {
 		
 		name = n;
 	}
 	
+	/***
+	 * 
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
+	
+	/***
+	 * 
+	 */
 	private void setMealsList() {
 		mealsList.add(vList);
 		mealsList.add(gfList);
 		mealsList.add(rList);
 	}
 	
+	/***
+	 * 
+	 * @param rate
+	 */
 	public void setRating(int rate) {
 		rating = rate;
 	}
 	
+	/***
+	 * 
+	 * @return
+	 */
 	public int getRating() {
 		return rating;
 	}
 	
+	/***
+	 * 
+	 * @return
+	 */
 	public Order getOrder() {
 		return order;
 	}
 	
+	/***
+	 * 
+	 * @param meal
+	 * @return
+	 */
 	public boolean hasMeal(Meal meal)
 	{
 		switch(meal.getType()) {
@@ -64,6 +104,11 @@ public class Restaurant {
 		}			
 	}
 	
+	/***
+	 * 
+	 * @param num
+	 * @param mType
+	 */
 	private void addMeals(int num, String mType) {
 		switch(mType) {
 		case "Vegetarian": 
@@ -81,6 +126,10 @@ public class Restaurant {
 		
 	}
 	
+	/***
+	 * 
+	 * @param m
+	 */
 	public void decMeal(Meal m) {
 		switch(m.getType()) {
 		case "Vegetarian": 
@@ -107,6 +156,11 @@ public class Restaurant {
 		}
 		
 	}
+	
+	/***
+	 * 
+	 * @return
+	 */
 	public ArrayList<ArrayList<Meal>> getMealsList(){
 		return this.mealsList;
 	}
