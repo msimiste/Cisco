@@ -9,25 +9,30 @@ public class Restaurant {
 	private ArrayList <Meal> gfList = new ArrayList<Meal> (0);
 	private ArrayList <Meal> rList = new ArrayList<Meal> (0);
 	private int rating;
+	private String name;
+	private Order order;
 	
 	private ArrayList<ArrayList<Meal>> mealsList = new ArrayList<ArrayList<Meal>>(3);
 	
-	public Restaurant(int rated, int vegan, int gf, int other) {
+	public Restaurant(int rated, int vegan, int gf, int other, String n) {
+		setName(n);
 		setRating(rated);
 		setMealsList();
 		addMeals(vegan, "Vegetarian");
 		addMeals(gf,"GlutenFree");
-		addMeals(other,"Regular");		
+		addMeals(other,"Regular");
+		order = new Order();
 	}
-	public static Comparator<Restaurant> RatingComparator = new Comparator<Restaurant>() {
-
-			public int compare(Restaurant r1, Restaurant r2) {
-			   int rating1 = r1.getRating();
-			   int rating2 = r2.getRating();
-
-			   return rating2-rating1;
-		    }};
 	
+	
+	public void setName(String n) {
+		
+		name = n;
+	}
+	
+	public String getName() {
+		return name;
+	}
 	private void setMealsList() {
 		mealsList.add(vList);
 		mealsList.add(gfList);
@@ -40,6 +45,10 @@ public class Restaurant {
 	
 	public int getRating() {
 		return rating;
+	}
+	
+	public Order getOrder() {
+		return order;
 	}
 	
 	public boolean hasMeal(Meal meal)
@@ -58,13 +67,13 @@ public class Restaurant {
 	private void addMeals(int num, String mType) {
 		switch(mType) {
 		case "Vegetarian": 
-			for(int i = 0; i<num; i++) { mealsList.get(0).add(new Vegetarian(mType));}
+			for(int i = 0; i<num; i++) { mealsList.get(0).add(new Vegetarian());}
 			break;			
 		case "GlutenFree": 
-			for(int i = 0; i<num; i++) { mealsList.get(1).add(new GlutenFree(mType));}
+			for(int i = 0; i<num; i++) { mealsList.get(1).add(new GlutenFree());}
 			break;
 		case "Regular":
-			for(int i = 0; i<num; i++) { mealsList.get(2).add(new GlutenFree(mType));}
+			for(int i = 0; i<num; i++) { mealsList.get(2).add(new GlutenFree());}
 			break;
 		default: System.out.print("Wrong Meal");
 			break;			
@@ -72,6 +81,32 @@ public class Restaurant {
 		
 	}
 	
+	public void decMeal(Meal m) {
+		switch(m.getType()) {
+		case "Vegetarian": 
+			if(!mealsList.get(0).isEmpty()) {
+				mealsList.get(0).remove(0);
+				mealsList.get(0).trimToSize();
+			}
+			
+			break;			
+		case "GlutenFree": 
+			if(!mealsList.get(1).isEmpty()) {
+				mealsList.get(1).remove(0);
+				mealsList.get(1).trimToSize();
+			}
+			break;
+		case "Regular":
+			if(!mealsList.get(2).isEmpty()) {
+				mealsList.get(2).remove(0);
+				mealsList.get(2).trimToSize();
+			}
+			break;
+		default: System.out.print("Wrong Meal");
+			break;			
+		}
+		
+	}
 	public ArrayList<ArrayList<Meal>> getMealsList(){
 		return this.mealsList;
 	}

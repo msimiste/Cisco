@@ -2,15 +2,17 @@ package cisco_challenge;
 
 public class Order {
 	
-	int vegan = 0;
-	int gf = 0;
-	int reg = 0;
+	private int vegan = 0;
+	private int gf = 0;
+	private int reg = 0;
 	
 	public Order(int v, int g, int r) {
 		vegan = v;
 		gf = g;
 		reg = r;
 	}
+	
+	public Order() {}
 	
 	public int getVegan() {
 		return vegan;
@@ -24,7 +26,7 @@ public class Order {
 		return reg;
 	}
 	
-	public void setVeganl(int n) {
+	public void setVegan(int n) {
 		vegan = n;
 	}
 	public void setGlutenFree(int n) {
@@ -32,6 +34,32 @@ public class Order {
 	}
 	public void setRegular(int n) {
 		reg = n;
+	}
+	
+	public void addMeal(Meal m) {
+		switch(m.getType()) {
+		case"Vegetarian": this.vegan++;
+		break;
+		case"GlutenFree": this.gf++;
+		break;
+		case"Regular": this.reg++;
+		break;
+		default: System.out.println("Something is wrong");
+		break;
+		}		
+	}
+	
+	public void decMeal(Meal m) {
+		switch(m.getType()) {
+		case"Vegetarian": this.vegan--;
+		break;
+		case"GlutenFree": this.gf--;
+		break;
+		case"Regular": this.reg--;
+		break;
+		default: System.out.println("Something is wrong");
+		break;
+		}		
 	}
 }
 
