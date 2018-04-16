@@ -1,4 +1,5 @@
-package cisco_challenge;
+package unit_tests;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,15 +8,16 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
+import cisco_challenge.*;
 import junit.framework.Assert;
 
 @SuppressWarnings("deprecation")
-class RestaurantTest {
+public class RestaurantTest {
 
 	@Test
-	void comparatorTest() {
+	public void comparatorTest() {
 		Restaurant r1 = new Restaurant(5,0,0,0, "r1");
 		Restaurant r2 = new Restaurant(4,0,0,0,"r2");
 		
@@ -26,14 +28,14 @@ class RestaurantTest {
 	}
 	
 	@Test 
-	void restaurantCreateTest(){
+	public void restaurantCreateTest(){
 		Restaurant r1 = new Restaurant(5,0,0,0,"R1");
 		assertNotNull(r1);
 	}
 	
 	
 	@Test 
-	void restaurantSetNameTest(){
+	public void restaurantSetNameTest(){
 		Restaurant r1 = new Restaurant(5,0,0,0,"R1");
 		assertNotNull(r1.getName());
 		assertEquals("R1",r1.getName());
@@ -43,14 +45,14 @@ class RestaurantTest {
 		
 	}
 	@Test
-	void restaurantGetNameTest() {
+	public void restaurantGetNameTest() {
 		Restaurant r1 = new Restaurant (5,0,0,0,"Restaurant #1");
 		assertEquals("Restaurant #1",r1.getName());
 		
 	}
 	
 	@Test
-	void restaurantGetOrderTest() {
+	public void restaurantGetOrderTest() {
 		Restaurant r1 = new Restaurant(5,0,0,0,"R1");
 		
 		assertNotNull(r1.getOrder());
@@ -62,7 +64,7 @@ class RestaurantTest {
 	}
 	
 	@Test 
-	void restaurtantSetOrderTest() {
+	public void restaurtantSetOrderTest() {
 		
 		Restaurant r1 = new Restaurant(5,0,0,0,"R1");
 		Order ord = new Order(5,4,3);
@@ -80,7 +82,7 @@ class RestaurantTest {
 	}
 	
 	@Test
-	void restaurantHasMealVeganTest() {
+	public void restaurantHasMealVeganTest() {
 		
 		Restaurant r1 = new Restaurant(5,5,0,0,"R1");
 		Meal m = new Vegetarian();
@@ -93,7 +95,7 @@ class RestaurantTest {
 	}
 	
 	@Test
-	void restaurantHasMealGlutenFreeTest() {
+	public void restaurantHasMealGlutenFreeTest() {
 		
 		Restaurant r1 = new Restaurant(5,5,4,3,"R1");
 		Meal m = new GlutenFree();
@@ -105,7 +107,7 @@ class RestaurantTest {
 	}
 	
 	@Test
-	void restaurantHasMealRegularTest() {
+	public void restaurantHasMealRegularTest() {
 		
 		Restaurant r1 = new Restaurant(5,5,4,3,"R1");
 		Meal m = new Regular();
@@ -117,7 +119,7 @@ class RestaurantTest {
 	}
 	
 	@Test
-	void restaurantHasMealFalseTest() {
+	public void restaurantHasMealFalseTest() {
 		
 		Restaurant r1 = new Restaurant(5,0,0,3,"R1");
 		Meal m = new Regular();
@@ -131,7 +133,7 @@ class RestaurantTest {
 	}
 	
 	@Test
-	void restaurantGetRatingTest() {
+	public void restaurantGetRatingTest() {
 		Restaurant r1 = new Restaurant(5,0,0,0,"R1");
 		
 		int rating = r1.getRating();
@@ -139,7 +141,7 @@ class RestaurantTest {
 	}
 	
 	@Test
-	void restaurantSetRatingTest() {
+	public void restaurantSetRatingTest() {
 		
 		Restaurant r1 = new Restaurant(5,0,0,0,"R1");
 		
@@ -152,7 +154,7 @@ class RestaurantTest {
 	}
 	
 	@Test 
-	void restaurantDecMealVeganTest(){
+	public void restaurantDecMealVeganTest(){
 		Restaurant r1 = new Restaurant(5,5,4,3,"R1");
 		
 		r1.decMeal(new Vegetarian());
@@ -163,7 +165,7 @@ class RestaurantTest {
 	}
 	
 	@Test
-	void restaurantDecMealGlutenFreeTest() {
+	public void restaurantDecMealGlutenFreeTest() {
 		
 		Restaurant r1 = new Restaurant(5,5,4,3,"R1");
 		
@@ -175,7 +177,7 @@ class RestaurantTest {
 	}
 	
 	@Test
-	void restaurantDecMealRegularTest() {
+	public void restaurantDecMealRegularTest() {
 		
 		Restaurant r1 = new Restaurant(5,5,4,3,"R1");
 		
@@ -186,7 +188,7 @@ class RestaurantTest {
 	}
 	
 	@Test
-	void restaurantDecMealNonExistentTest() {
+	public void restaurantDecMealNonExistentTest() {
 		
 		//Arrange
 	    OutputStream outContent = new ByteArrayOutputStream();
@@ -207,7 +209,7 @@ class RestaurantTest {
 	}
 	
 	@Test
-	void restaurantGetMealsListTest() {
+	public void restaurantGetMealsListTest() {
 		
 		 Restaurant r1 = new Restaurant(5,5,4,3,"R1");
 		ArrayList<ArrayList<Meal>> testMealsList = r1.getMealsList();

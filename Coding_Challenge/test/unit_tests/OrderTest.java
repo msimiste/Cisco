@@ -1,4 +1,5 @@
-package cisco_challenge;
+package unit_tests;
+
 
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,12 +10,14 @@ import java.io.PrintStream;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class OrderTest {
+import cisco_challenge.*;
+
+public class OrderTest {
 
 	@Test
-	void orderCreateTest() {
+	public void orderCreateTest() {
 		Order ord = new Order();
 		assertNotNull(ord);
 		assertEquals(0,ord.getVegan());
@@ -23,28 +26,28 @@ class OrderTest {
 	}
 	
 	@Test
-	void orderGetVeganTest() {
+	public void orderGetVeganTest() {
 		Order ord = new Order(5,4,3);
 		assertNotNull(ord);
 		assertEquals(5,ord.getVegan());		
 	}
 
 	@Test
-	void orderGetGlutenFreeTest() {
+	public void orderGetGlutenFreeTest() {
 		Order ord = new Order(5,4,3);
 		assertNotNull(ord);
 		assertEquals(4,ord.getGlutenFree());
 	}
 	
 	@Test 
-	void orderGetRegularTest() {
+	public void orderGetRegularTest() {
 		Order ord = new Order(5,4,3);
 		assertNotNull(ord);
 		assertEquals(3,ord.getRegular());
 	}
 	
 	@Test
-	void orderSetVeganTest() {
+	public void orderSetVeganTest() {
 		Order ord = new Order(5,4,3);
 		assertNotNull(ord);
 		assertEquals(5,ord.getVegan());	
@@ -53,7 +56,7 @@ class OrderTest {
 	}
 
 	@Test
-	void orderSetGlutenFreeTest() {
+	public void orderSetGlutenFreeTest() {
 		Order ord = new Order(5,4,3);
 		assertNotNull(ord);
 		assertEquals(4,ord.getGlutenFree());
@@ -62,7 +65,7 @@ class OrderTest {
 	}
 	
 	@Test 
-	void orderSetRegularTest() {
+	public void orderSetRegularTest() {
 		Order ord = new Order(5,4,3);
 		assertNotNull(ord);
 		assertEquals(3,ord.getRegular());
@@ -71,7 +74,7 @@ class OrderTest {
 	}
 	
 	@Test
-	void orderAddVegetarianMealTest() {
+	public void orderAddVegetarianMealTest() {
 		Order ord = new Order(5,4,3);
 		Meal m = new Vegetarian();
 		assertNotNull(m);
@@ -87,7 +90,7 @@ class OrderTest {
 	}
 	
 	@Test
-	void orderAddGlutenFreeMealTest() {
+	public void orderAddGlutenFreeMealTest() {
 		Order ord = new Order(5,4,3);
 		Meal m = new GlutenFree();
 		assertNotNull(m);
@@ -102,7 +105,7 @@ class OrderTest {
 	}
 	
 	@Test
-	void orderAddRegularMealTest() {
+	public void orderAddRegularMealTest() {
 		Order ord = new Order(5,4,3);
 		Meal m = new Regular();
 		assertNotNull(m);
@@ -117,7 +120,7 @@ class OrderTest {
 	}
 	
 	@Test
-	void addNonExistentMealTest() {
+	public void addNonExistentMealTest() {
 		//Arrange
 	    OutputStream outContent = new ByteArrayOutputStream();
 	    PrintStream sysOut = new PrintStream(outContent);
@@ -141,7 +144,7 @@ class OrderTest {
 	}
 	
 	@Test
-	void orderDecVeganMealTest() {	
+	public void orderDecVeganMealTest() {	
 		
 		Order ord = new Order(5,4,3);
 		Meal m = new Vegetarian();
@@ -161,7 +164,7 @@ class OrderTest {
 	}
 	
 	@Test
-	void orderDecGlutenFreeMealTest() {
+	public void orderDecGlutenFreeMealTest() {
 		
 		Order ord = new Order(5,4,3);
 		Meal m = new GlutenFree();
@@ -178,7 +181,7 @@ class OrderTest {
 	}
 	
 	@Test
-	void orderDecRegularTest() {
+	public void orderDecRegularTest() {
 	
 		Order ord = new Order(5,4,3);
 		Meal m = new Regular();
@@ -195,7 +198,7 @@ class OrderTest {
 	
 
 	@Test
-	void orderDecNonExistentMealTest() {
+	public void orderDecNonExistentMealTest() {
 		
 		//Arrange
 	    OutputStream outContent = new ByteArrayOutputStream();

@@ -1,50 +1,53 @@
-package cisco_challenge;
+package unit_tests;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class MealTest {
+import cisco_challenge.*;
+
+public class MealTest {
 
 	@Test
-	void vegetarianCreateTest() {
+	public void vegetarianCreateTest() {
 		Vegetarian v = new Vegetarian();
 		assertNotNull(v);
 		
 	}
 	
 	@Test
-	void glutenFreeCreateTest() {
+	public void glutenFreeCreateTest() {
 		GlutenFree gf = new GlutenFree();
 		assertNotNull(gf);
 	}
 
 	@Test
-	void regularCreateTest() {
+	public void regularCreateTest() {
 		Regular reg = new Regular();
 		assertNotNull(reg);
 	}
 	
 	@Test
-	void regularTypeTest() {
+	public void regularTypeTest() {
 		Regular reg = new Regular();
 		assertEquals("Regular",reg.getType());
 	}
 	
 	@Test
-	void getGlutenFreeTypeTest() {
+	public void getGlutenFreeTypeTest() {
 		GlutenFree gf = new GlutenFree();
 		assertEquals("GlutenFree",gf.getType());
 	}
 	
 	@Test
-	void getVegetarianTypeTest() {
+	public void getVegetarianTypeTest() {
 		Vegetarian v = new Vegetarian();
 		assertEquals("Vegetarian",v.getType());
 	}
 	
 	@Test
-	void setTypeTest() {
+	public void setTypeTest() {
 		Vegetarian v = new Vegetarian();
 		v.setType("TestingThisMethod");
 		assertEquals("TestingThisMethod",v.getType());
