@@ -158,7 +158,7 @@ public class Restaurant {
 				mealsList.get(2).trimToSize();
 			}
 			break;
-		default: System.out.print("Wrong Meal");
+		default: System.out.println("Wrong Meal");
 			break;			
 		}
 		

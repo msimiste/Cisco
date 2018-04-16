@@ -1,6 +1,12 @@
 package cisco_challenge;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 import junit.framework.Assert;
@@ -145,5 +151,71 @@ class RestaurantTest {
 		assertEquals(4,rating);
 	}
 	
+	@Test 
+	void restaurantDecMealVeganTest(){
+		Restaurant r1 = new Restaurant(5,5,4,3,"R1");
+		
+		r1.decMeal(new Vegetarian());
+		int veganMeals = r1.getMealsList().get(0).size();
+		
+		assertEquals(4,veganMeals);
+		
+	}
+	
+	@Test
+	void restaurantDecMealGlutenFreeTest() {
+		
+		Restaurant r1 = new Restaurant(5,5,4,3,"R1");
+		
+		r1.decMeal(new GlutenFree());
+		int glutenFreeMeals = r1.getMealsList().get(1).size();
+		
+		assertEquals(3,glutenFreeMeals);
+		
+	}
+	
+	@Test
+	void restaurantDecMealRegularTest() {
+		
+		Restaurant r1 = new Restaurant(5,5,4,3,"R1");
+		
+		r1.decMeal(new Regular());
+		int regularMeals = r1.getMealsList().get(2).size();
+		
+		assertEquals(2,regularMeals);
+	}
+	
+	@Test
+	void restaurantDecMealNonExistentTest() {
+		
+		//Arrange
+	    OutputStream outContent = new ByteArrayOutputStream();
+	    PrintStream sysOut = new PrintStream(outContent);
+	    System.setOut(sysOut);
+	    Restaurant r1 = new Restaurant(5,5,4,3,"R1");
+	    Meal m = new Regular();
+	    m.setType("Non-Existent");
+	   
+	    
+	    //Act
+		r1.decMeal(m);
+		
+		//Assert
+		assertEquals("Wrong Meal"+System.getProperty("line.separator"), outContent.toString());
+		
+		System.setOut(System.out);		
+	}
+	
+	@Test
+	void restaurantGetMealsListTest() {
+		
+		 Restaurant r1 = new Restaurant(5,5,4,3,"R1");
+		ArrayList<ArrayList<Meal>> testMealsList = r1.getMealsList();
+		
+		assertEquals(5,testMealsList.get(0).size());
+		assertEquals(4,testMealsList.get(1).size());
+		assertEquals(3,testMealsList.get(2).size());
+		
+	}
 
 }
