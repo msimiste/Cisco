@@ -86,8 +86,16 @@ public class Restaurant {
 		return order;
 	}
 	
+
 	/***
 	 * 
+	 * @param o
+	 */
+	public void setOrder(Order o) {
+		order = o;
+	}
+	
+	/***
 	 * @param meal
 	 * @return
 	 */
@@ -136,8 +144,7 @@ public class Restaurant {
 			if(!mealsList.get(0).isEmpty()) {
 				mealsList.get(0).remove(0);
 				mealsList.get(0).trimToSize();
-			}
-			
+			}			
 			break;			
 		case "GlutenFree": 
 			if(!mealsList.get(1).isEmpty()) {
